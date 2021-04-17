@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#dd4040;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="icon-trash" transform="translate(.5 .5)">
+        <path id="path" d="M575 657v10.994a4.005 4.005 0 0 1-4.006 4.006h-6.988a4.005 4.005 0 0 1-4.006-4.006V657" class="cls-1" transform="translate(-558 -649)"/>
+        <path id="path-2" d="M563.844 651.208a2.208 2.208 0 0 1 2.208-2.208h.71a2.209 2.209 0 0 1 2.208 2.208" class="cls-1" transform="translate(-557 -649)"/>
+        <path id="line" fill="none" stroke="#dd4040" stroke-linecap="round" d="M0 0h19" transform="translate(0 5)"/>
+        <path id="line-2" d="M0 0L0 8" class="cls-1" transform="translate(7 10)"/>
+        <path id="line-3" d="M0 0L0 8" class="cls-1" transform="translate(12 10)"/>
+    </g>
+</svg>

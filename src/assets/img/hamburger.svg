@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#a6bcd0;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="Grupo_8" transform="translate(-849.5 -150.5)">
+        <g id="icon-calendar" transform="translate(850 151)">
+            <rect id="rectangle" width="18" height="17" class="cls-1" rx="2.656"/>
+            <path id="line" d="M0 0L12 0" class="cls-1" transform="translate(3 7)"/>
+            <path id="line-2" d="M0 0L12 0" class="cls-1" transform="translate(3 9)"/>
+            <path id="line-3" d="M0 0L12 0" class="cls-1" transform="translate(3 11)"/>
+        </g>
+    </g>
+</svg>

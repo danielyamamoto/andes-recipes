@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="13.197" height="13.197" viewBox="0 0 13.197 13.197">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <g id="Grupo_7" transform="translate(-7.811 -7.811)">
+        <path id="line" d="M0 0L0 12.197" class="cls-1" transform="translate(14.409 8.311)"/>
+        <path id="line-2" d="M12.197 0L0 0" class="cls-1" transform="translate(8.311 14.409)"/>
+    </g>
+</svg>
