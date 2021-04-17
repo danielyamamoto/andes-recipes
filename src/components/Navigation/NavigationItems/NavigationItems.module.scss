@@ -1,7 +1,16 @@
+@import '../../../assets/sass/utilities';
+@import '../../../assets/sass/variables';
+
 .navigationItems {
     list-style: none;
     height: 100%;
-    
-    display: flex;
-    align-items: center;
+}
+
+.addLogo {
+    width: 2.9rem;
+    height: 2.9rem;
+    padding: 7.3px 8.5px 8.5px 7.3px;
+    margin-right: 2rem;
+    border-radius: 50%;
+    background-color: $primary-color-grey-dark;
 }

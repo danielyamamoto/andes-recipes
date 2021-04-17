@@ -1,5 +1,4 @@
 @import '../../assets/sass/variables';
-@import '../../assets/sass/utilities';
 
 .toolbar {
     height: $height-toolbar;
@@ -11,19 +10,7 @@
     z-index: 9rem;
     background-color: $primary-color-grey-light;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     & > nav {
         height: 100%;
     }
-}
-
-.addLogo {
-    width: 2.9rem;
-    height: 2.9rem;
-    padding: 7.3px 8.5px 8.5px 7.3px;
-    border-radius: 50%;
-    background-color: $primary-color-grey-dark;
 }
