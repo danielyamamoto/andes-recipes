@@ -1,5 +1,6 @@
 import React, {StrictMode} from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from 'react-router-dom';
 
 import "./assets/styles/normalize.css";
 import "./assets/sass/main.scss";
@@ -7,9 +8,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const app = (
-    <StrictMode>
-        <App />
-    </StrictMode>
+    <BrowserRouter>
+        <StrictMode>
+            <App />
+        </StrictMode>
+    </BrowserRouter>
 );
 
 ReactDOM.render(app, document.getElementById("root"));
