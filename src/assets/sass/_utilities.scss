@@ -1,0 +1,39 @@
+.flexContainer {
+    display: flex;
+
+    // TYPE OF FLEX
+    &__column {
+        flex-direction: column;
+    }
+
+    // WRAP
+    &__wrap {
+        flex-wrap: wrap;
+    }
+
+    // TYPE OF CONTENT
+    &__justifyCenter {
+        justify-content: center;
+    }
+
+    &__justifyBetween {
+        justify-content: space-between;
+    }
+
+    &__justifyEvenly {
+        justify-content: space-evenly;
+    }
+
+    &__justifyEnd {
+        justify-content: flex-end;
+    }
+
+    // ITEMS
+    &__itemsStart {
+        align-items: flex-start;
+    }
+    
+    &__itemsCenter {
+        align-items: center;
+    }
+}
