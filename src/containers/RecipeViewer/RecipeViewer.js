@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 
 import Modal from '../../components/UI/Modal/Modal';
 import NewRecipe from '../../components/Recipe/NewRecipe/NewRecipe';
+import Recipe from '../../components/Recipe/Recipe';
 import BGImages from '../../components/UI/BGImages/BGImages';
 
 import classes from './RecipeViewer.module.scss';
 import * as actions from '../../store/actions/index';
+
 class RecipeViewer extends Component {
     render() {
         return(
@@ -16,9 +18,7 @@ class RecipeViewer extends Component {
                 </Modal>
                 
                 <div className={[classes.reciperViewer, classes.flexContainer].join(' ')}>
-                    <div>
-                        HOLA
-                    </div>
+                    <Recipe />
                     <BGImages />
                 </div>
             </Fragment>

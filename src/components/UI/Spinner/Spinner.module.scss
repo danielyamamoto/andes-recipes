@@ -1,9 +1,10 @@
 @import '../../../assets/sass/animations';
+@import '../../../assets/sass/variables';
 
 .loader,
 .loader:before,
 .loader:after {
-    background: #ffffff;
+    background: $primary-color-green;
     -webkit-animation: load1 1s infinite ease-in-out;
     animation: load1 1s infinite ease-in-out;
     width: 1em;
@@ -11,7 +12,7 @@
 }
 
 .loader {
-    color: #ffffff;
+    color: $primary-color-green;
     text-indent: -9999em;
     margin: 88px auto;
     position: relative;
@@ -38,4 +39,8 @@
         top: 0;
         content: '';
     }
+}
+
+h1 {
+    text-align: center;
 }

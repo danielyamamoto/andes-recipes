@@ -1,5 +1,7 @@
 export {
     addRecipeStart,
     addRecipeCancel,
-    addIngredient
+    addIngredient,
+    fetchRecipes,
+    sendRecipeForm
 } from './recipeViewer';

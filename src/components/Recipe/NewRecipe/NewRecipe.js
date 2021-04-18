@@ -9,12 +9,15 @@ import classes from './NewRecipe.module.scss';
 import svgClose from '../../../assets/img/close.svg';
 import svgDelete from '../../../assets/img/trash.svg';
 import svgAdd from '../../../assets/img/add.svg';
-import { updateObject } from '../../../shared/utility';
+
+import axios from '../../../axios-orders';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions/index';
+import { updateObject } from '../../../shared/utility';
 
 class NewRecipe extends Component {
     state = {
-        orderForm: {
+        recipeForm: {
             recipeName: {
                 elementType: 'input',
                 elementConfig: {
@@ -50,21 +53,40 @@ class NewRecipe extends Component {
 
     addRecipeHandler = event => {
         event.preventDefault();
-        // SEND TO DB
+
+        const formData = {};
+        for(let formElementIdentifier in this.state.recipeForm) {
+            formData[formElementIdentifier] = this.state.recipeForm[formElementIdentifier];
+        }
+
+        const recipe = {
+            recipeData: formData
+        }
+
+        this.props.onSendForm(recipe);
+        this.props.onAddRecipeCancel();
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
-        const updatedFormElemet = updateObject(this.state.orderForm[inputIdentifier], {value: event.target.value}); // Get value from event
-        const updatedOrderForm = updateObject(this.state.orderForm, {[inputIdentifier]: updatedFormElemet}); // Set the correct value to copied state
-        this.setState({orderForm: updatedOrderForm}); // Update the state
+        const updatedFormElemet = updateObject(this.state.recipeForm[inputIdentifier], {value: event.target.value}); // Get value from event
+        const updatedRecipeForm = updateObject(this.state.recipeForm, {[inputIdentifier]: updatedFormElemet}); // Set the correct value to copied state
+        this.setState({recipeForm: updatedRecipeForm}); // Update the state
     }
+
+/*     inputClearHandler = () => {
+        for(let formElementIdentifier in this.state.recipeForm) {
+            const updatedFormElemet = updateObject(this.state.recipeForm[formElementIdentifier], {value: ''}); // Get value from event
+            const updatedRecipeForm = updateObject(this.state.recipeForm, {[formElementIdentifier]: updatedFormElemet}); // Set the correct value to copied state
+            this.setState({recipeForm: updatedRecipeForm}); // Update the state
+        }
+    } */
 
     render() {
         const formElementsArray = [];
-        for(let key in this.state.orderForm) {
+        for(let key in this.state.recipeForm) {
             formElementsArray.push({
                 id: key,
-                config: this.state.orderForm[key]
+                config: this.state.recipeForm[key]
             });
         }
 
@@ -111,16 +133,19 @@ class NewRecipe extends Component {
                 />
             </div>;
 
+        const form = this.props.loading ? <Spinner /> :
+            <form onSubmit={this.addRecipeHandler}>
+                {sectionOne}
+                {sectionTwo}
+                {sectionThree}
+                <div className={[classes.flexContainer, classes.flexContainer__justifyEnd, classes.flexContainer__itemsCenter].join(' ')}>
+                    <Button btnType="button__success">Create</Button>
+                </div>
+            </form>;
+
         return(
             <div className={classes.newRecipe}>
-                <form onSubmit={this.addRecipeHandler}>
-                    {sectionOne}
-                    {sectionTwo}
-                    {sectionThree}
-                    <div className={[classes.flexContainer, classes.flexContainer__justifyEnd, classes.flexContainer__itemsCenter].join(' ')}>
-                        <Button btnType="button__success">Create</Button>
-                    </div>
-                </form>
+                {form}
             </div>
         );
     }
@@ -128,6 +153,7 @@ class NewRecipe extends Component {
 
 const mapStateToProps = state => {
     return {
+        loading: state.recipeViewer.loading,
         addRecipe: state.recipeViewer.addRecipe,
         addIngredient: state.recipeViewer.addIngredient,
         ingredientsIndex: state.recipeViewer.initialIngredients
@@ -138,7 +164,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddRecipeCancel: () => dispatch(actions.addRecipeCancel()),
         onAddIngredient: () => dispatch(actions.addIngredient()),
+        onSendForm: recipeData => dispatch(actions.sendRecipeForm(recipeData))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(NewRecipe, axios));
