@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -9,6 +10,7 @@ import svgClose from '../../../assets/img/close.svg';
 import svgDelete from '../../../assets/img/trash.svg';
 import svgAdd from '../../../assets/img/add.svg';
 import { updateObject } from '../../../shared/utility';
+import * as actions from '../../../store/actions/index';
 
 class NewRecipe extends Component {
     state = {
@@ -76,7 +78,7 @@ class NewRecipe extends Component {
                     value={formElementsArray[0].config.value}
                     changed={event => this.inputChangedHandler(event, formElementsArray[0].id)}
                 />
-                <Button><img src={svgClose} alt="Close modal" /></Button>
+                <div onClick={this.props.onAddRecipeCancel}><img src={svgClose} alt="Close modal" /></div>
             </div>;
 
         const sectionTwo = 
@@ -90,10 +92,10 @@ class NewRecipe extends Component {
                         value={formElementsArray[1].config.value}
                         changed={event => this.inputChangedHandler(event, formElementsArray[1].id)}
                     />
-                    <Button><img src={svgDelete} alt="Delete ingredient" /></Button>
+                    <div><img src={svgDelete} alt="Delete ingredient" /></div>
                 </div>
                 <div className={[classes.flexContainer, classes.flexContainer__justifyEnd, classes.flexContainer__itemsCenter].join(' ')}>
-                    <Button><div><img src={svgAdd} alt="Delete ingredient" /></div></Button>
+                    <div><img src={svgAdd} alt="Delete ingredient" /></div>
                 </div>
             </div>;
         
@@ -125,4 +127,10 @@ class NewRecipe extends Component {
     }
 }
 
-export default NewRecipe;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddRecipeCancel: () => dispatch(actions.addRecipeCancel())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(NewRecipe);

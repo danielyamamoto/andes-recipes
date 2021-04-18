@@ -1,18 +1,32 @@
-import React, {StrictMode} from "react";
-import ReactDOM from "react-dom";
+import React, {StrictMode} from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 
-import "./assets/styles/normalize.css";
-import "./assets/sass/main.scss";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import './assets/styles/normalize.css';
+import './assets/sass/main.scss';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import recipeViewerReducer from './store/reducers/recipeViewer';
+
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+
+const rootReducer = combineReducers({
+    recipeViewer: recipeViewerReducer
+});
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const app = (
-    <BrowserRouter>
-        <StrictMode>
-            <App />
-        </StrictMode>
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <StrictMode>
+                <App />
+            </StrictMode>
+        </BrowserRouter>
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById("root"));

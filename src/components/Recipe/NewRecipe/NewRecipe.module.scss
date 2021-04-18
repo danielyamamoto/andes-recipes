@@ -9,7 +9,6 @@
         width: 100%;
         
         &:first-child {
-            
             & p {
                 margin-right: 10px;
                 font-size: 3rem;
@@ -19,15 +18,15 @@
             input {
                 padding: 1.5rem;
             }
+
+            & > div:last-child {
+                flex: 0 1;
+                margin-left: 20px;
+            }
         }
 
         &:not(:last-child) {
             padding-bottom: 2rem;
-            
-            & button {
-                padding: 5px 10px;
-                background-color: transparent;
-            }
         }
 
         &:not(:first-child) {
@@ -39,16 +38,18 @@
             }
         }
 
-        &:nth-child(2) > div:last-child > button {
-            padding: 0;
-            margin-right: 15px;
-
-            & > div {
-                width: 2.9rem;
-                height: 2.9rem;
-                padding: 5.3px 5.5px 8.5px 7.3px;
+        &:nth-child(2) {
+            & > div > div:last-child {
+                flex: 0 1;
+                margin-left: 20px;
+            }
+            
+            &> div:last-child > div {
+                width: 2.5rem;
+                height: 2.5rem;
+                padding: 4.3px 5.5px 8.5px 5.3px;
                 border-radius: 50%;
-                background-color: $primary-color-grey-dark;           
+                background-color: $primary-color-grey-dark;
             }
         }
     }
