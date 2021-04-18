@@ -12,10 +12,9 @@ import * as actions from '../../../store/actions/index';
 const navigationItems = props => (
     <ul className={[classes.navigationItems, classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
         <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
-            <div className={classes.addLogo}>
+            <div className={classes.addLogo} onClick={props.onAddRecipeStart}>
                 <Logo svgLogo={svgAdd} svgText="SVG-Add agrega nueva receta" />
             </div>
-            {/* <NavigationItem link="/" exact onClick={this.props.onAddRecipe}>ADD RECIPE</NavigationItem> */}
             <div onClick={props.onAddRecipeStart}>ADD RECIPE</div>
         </div>
         

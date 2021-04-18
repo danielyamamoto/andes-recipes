@@ -22,6 +22,7 @@
             & > div:last-child {
                 flex: 0 1;
                 margin-left: 20px;
+                cursor: pointer;
             }
         }
 
@@ -42,6 +43,7 @@
             & > div > div:last-child {
                 flex: 0 1;
                 margin-left: 20px;
+                cursor: pointer;
             }
             
             &> div:last-child > div {
@@ -49,6 +51,7 @@
                 height: 2.5rem;
                 padding: 4.3px 5.5px 8.5px 5.3px;
                 border-radius: 50%;
+                cursor: pointer;
                 background-color: $primary-color-grey-dark;
             }
         }

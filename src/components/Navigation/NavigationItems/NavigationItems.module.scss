@@ -4,6 +4,10 @@
 .navigationItems {
     list-style: none;
     height: 100%;
+
+    & > div > div {
+        cursor: pointer;
+    }
 }
 
 .addLogo {

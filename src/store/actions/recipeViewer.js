@@ -12,14 +12,21 @@ export const addRecipeCancel = () => {
     }
 };
 
-export const removeRecipeStart = () => {
+export const addIngredientStart = () => {
     return {
-        type: actionTypes.REMOVE_RECIPE_START
+        type: actionTypes.ADD_INGREDIENT_START
     }
 };
 
-export const removeRecipeCancel = () => {
+export const addIngredientFinished = () => {
     return {
-        type: actionTypes.REMOVE_RECIPE_CANCEL
+        type: actionTypes.ADD_INGREDIENT_FINISHED
     }
+};
+
+export const addIngredient = () => {
+    return dispatch => {
+        dispatch(addIngredientStart());
+        dispatch(addIngredientFinished());
+    };
 };

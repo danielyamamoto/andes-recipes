@@ -95,7 +95,7 @@ class NewRecipe extends Component {
                     <div><img src={svgDelete} alt="Delete ingredient" /></div>
                 </div>
                 <div className={[classes.flexContainer, classes.flexContainer__justifyEnd, classes.flexContainer__itemsCenter].join(' ')}>
-                    <div><img src={svgAdd} alt="Delete ingredient" /></div>
+                    <div onClick={this.props.onAddIngredient}><img src={svgAdd} alt="Delete ingredient" /></div>
                 </div>
             </div>;
         
@@ -110,7 +110,6 @@ class NewRecipe extends Component {
                     changed={event => this.inputChangedHandler(event, formElementsArray[formElementsArray.length - 1].id)}
                 />
             </div>;
-
 
         return(
             <div className={classes.newRecipe}>
@@ -127,10 +126,19 @@ class NewRecipe extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        onAddRecipeCancel: () => dispatch(actions.addRecipeCancel())
+        addRecipe: state.recipeViewer.addRecipe,
+        addIngredient: state.recipeViewer.addIngredient,
+        ingredientsIndex: state.recipeViewer.initialIngredients
     };
 };
 
-export default connect(null, mapDispatchToProps)(NewRecipe);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAddRecipeCancel: () => dispatch(actions.addRecipeCancel()),
+        onAddIngredient: () => dispatch(actions.addIngredient()),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe);

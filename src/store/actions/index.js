@@ -1,6 +1,5 @@
 export {
     addRecipeStart,
     addRecipeCancel,
-    removeRecipeStart,
-    removeRecipeCancel
+    addIngredient
 } from './recipeViewer';
