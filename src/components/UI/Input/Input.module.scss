@@ -1,0 +1,32 @@
+@import '../../../assets/sass/variables';
+
+.inputElement {
+    display: block;
+    width: 100%;
+    outline: none;
+    border: 0px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: $primary-color-grey-dark;
+    background-color: $primary-color-grey-light;
+
+    &:focus {
+        outline: none;
+        color: black;
+    }
+}
+
+.input {
+    width: 100%;
+}
+
+.label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+textarea { 
+    resize: none;
+    height: 150px;
+}

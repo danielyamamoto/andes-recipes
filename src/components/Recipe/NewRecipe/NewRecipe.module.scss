@@ -1,0 +1,55 @@
+@import '../../../assets/sass/utilities';
+@import '../../../assets/sass/variables';
+
+.newRecipe {
+    width: 100%;
+    text-align: center;
+    
+    & div {
+        width: 100%;
+        
+        &:first-child {
+            
+            & p {
+                margin-right: 10px;
+                font-size: 3rem;
+                color: $color-blue-grey;
+            }
+
+            input {
+                padding: 1.5rem;
+            }
+        }
+
+        &:not(:last-child) {
+            padding-bottom: 2rem;
+            
+            & button {
+                padding: 5px 10px;
+                background-color: transparent;
+            }
+        }
+
+        &:not(:first-child) {
+            & p {
+                text-align: left;
+                font-size: 2rem;
+                color: $primary-color-green;
+                padding-bottom: 1rem;
+            }
+        }
+
+        &:nth-child(2) > div:last-child > button {
+            padding: 0;
+            margin-right: 15px;
+
+            & > div {
+                width: 2.9rem;
+                height: 2.9rem;
+                padding: 5.3px 5.5px 8.5px 7.3px;
+                border-radius: 50%;
+                background-color: $primary-color-grey-dark;           
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@import '../../../assets/sass/variables';
+
+.button {
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+
+    &__success {
+        background-color: $primary-color-green;
+    }
+}

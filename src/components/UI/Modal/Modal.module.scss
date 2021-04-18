@@ -1,0 +1,14 @@
+@import '../../../assets/sass/variables';
+
+.modal {
+    position: fixed;
+    left: 30%;
+    top: 20%;
+    z-index: 500;
+    width: 40%;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid $color-blue-grey;
+    transition: all 0.3s ease-out;
+}
