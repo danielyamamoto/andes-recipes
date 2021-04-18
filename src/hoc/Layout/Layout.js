@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import classes from './Layout.module.scss';
-import Toolbar from '../../components/Toolbar/Toolbar';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 class Layout extends Component {
     

@@ -1,0 +1,13 @@
+@mixin position-item($x, $y) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-$x, -$y);
+}
+
+@mixin center-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

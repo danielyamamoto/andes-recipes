@@ -1,0 +1,16 @@
+@import '../../../assets/sass/variables';
+@import '../../../assets/sass/mixins';
+
+
+.bgImages {
+    position: relative;
+    border-radius: 0 0 0 50%;
+    overflow: hidden;
+
+    & img {
+        @include position-item(46%, 60%); 
+        height: 125vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+}

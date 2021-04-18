@@ -1,0 +1,16 @@
+@import '../../assets/sass/utilities';
+@import '../../assets/sass/variables';
+
+.reciperViewer {
+    width: 100vw;
+    height: calc(100vh - #{$height-toolbar});
+
+    & > div {
+        height: 100%;
+        width: 100%;
+    }
+
+    & > :first-child {
+        flex: 1 0 60%;
+    }
+}
