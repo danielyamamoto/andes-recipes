@@ -1,3 +1,11 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
 @mixin position-item($x, $y) {
     position: absolute;
     top: 50%;
