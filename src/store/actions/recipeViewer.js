@@ -91,6 +91,13 @@ export const recipeFormFailed = error => {
     };
 };
 
+export const recipeReloadAfterSendForm = (recipeData) => {
+    return dispatch => {
+        dispatch(sendRecipeForm(recipeData));
+        dispatch(fetchRecipes());
+    }
+};
+
 export const sendRecipeForm = recipeData => {
     return dispatch => {
         dispatch(recipeFormStart());

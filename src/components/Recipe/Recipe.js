@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -14,81 +14,89 @@ class Recipe extends Component {
     componentDidMount() {
         this.props.onFetchRecipes();
     }
-    
-    
+
     render() {
-        console.log(this.props.recipes);
-        
+        const recipesArray = [];
+        for(let key in this.props.recipes) {
+            recipesArray.push({
+                id: key,
+                config: this.props.recipes[key]
+            });
+        }
+
+        let recipe = null;
+        if(!this.props.initialRecipes && this.props.recipes.length > 0) {
+            recipe = (
+                <Fragment>
+                    <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
+                        <h1>Kitchen&nbsp;Recipes</h1>
+                        <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
+                            <img src={svgSelect} alt="Select the recipe" />
+                            <p>SELECT A RECIPE</p>
+                        </div>
+                    </div>
+
+                    <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')} >
+                        <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
+                            <p>{recipesArray[0].config.recipeData.recipeName.value}</p>
+                            <div></div>
+                            <p>Review</p>
+                            <div>
+                                <img src={svgStarFull} alt="Starfull" />
+                                <img src={svgStarFull} alt="Starfull" />
+                                <img src={svgStarFull} alt="Starfull" />
+                                <img src={svgStarEmpty} alt="Starfull" />
+                                <img src={svgStarEmpty} alt="Starfull" />
+                            </div>
+                        </div>
+                        <div>
+                            <img src={svgRemove} alt="Select the recipe" />
+                        </div>
+                    </div>
+
+                    <div className={[classes.flexContainer, classes.flexContainer__column, classes.flexContainer__itemsStart].join(' ')}>
+                        <div>
+                            <h2>Ingredients</h2>
+                            <ul>
+                                <li>
+                                    <div className={[classes.flexContainer, classes.flexContainer__itemsStart].join(' ')}>
+                                        <input type="checkbox" id="c1" value="" />
+                                        <label htmlFor="c1"></label>
+                                        <div>
+                                            <p>{recipesArray[0].config.recipeData.ingredientName.value}</p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2>Instructions</h2>
+                            <div><p>{recipesArray[0].config.recipeData.instructions.value}</p></div>
+                        </div>
+                    </div>
+                </Fragment>
+            );
+        }
+        else {
+            recipe = (
+                <h1>There are not recipes in the database</h1>
+            )
+        }
+
+
         return(
             <div className={classes.recipe}>
-                {this.props.loading ? <Spinner /> : null }
-                <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
-                    <h1>Kitchen&nbsp;Recipes</h1>
-                    <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
-                        <img src={svgSelect} alt="Select the recipe" />
-                        <p>SELECT A RECIPE</p>
-                    </div>
-                </div>
-
-                <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')} >
-                    <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
-                        <p>Mixed Berry Melody</p>
-                        <div></div>
-                        <p>Review</p>
-                        <div>
-                            <img src={svgStarFull} alt="Starfull" />
-                            <img src={svgStarFull} alt="Starfull" />
-                            <img src={svgStarFull} alt="Starfull" />
-                            <img src={svgStarEmpty} alt="Starfull" />
-                            <img src={svgStarEmpty} alt="Starfull" />
-                        </div>
-                    </div>
-                    <div>
-                        <img src={svgRemove} alt="Select the recipe" />
-                    </div>
-                </div>
-
-                <div className={[classes.flexContainer, classes.flexContainer__column, classes.flexContainer__itemsStart].join(' ')}>
-                    <div>
-                        <h2>Ingredients</h2>
-                        <ul>
-                            <li>
-                                <div className={[classes.flexContainer, classes.flexContainer__itemsStart].join(' ')}>
-                                    <input type="checkbox" id="c1" value="" />
-                                    <label htmlFor="c1"></label>
-                                    <div>
-                                        <p>Perritos</p>
-                                    </div>
-                                </div>
-
-                                <div className={[classes.flexContainer, classes.flexContainer__itemsStart].join(' ')}>
-                                    <input type="checkbox" id="c2" value="" />
-                                    <label htmlFor="c2"></label>
-                                    <div>
-                                        <p>Gatitos</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2>Instructions</h2>
-                        <div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipiscing elit ridiculus enim, bibendum urna metus eu curabitur mollis velit. Cum sed cursus nisl velit aenean curae nascetur fermentum, at urna orci primis non pellentesque in mus tellus, cubilia suspendisse maecenas vel habitasse litora ridiculus. Facilisis malesuada lacinia lectus at vivamus sociosqu convallis, maecenas a conubia ullamcorper scelerisque dictum orci nec, varius cursus magna odio lacus pulvinar.
-                        </p>
-                        </div>
-                    </div>
-                </div>
+                {this.props.loading ? <Spinner /> : recipe}
             </div>
-
         );
     }
 }
 const mapStateToProps = state => {
     return {
         recipes: state.recipeViewer.recipes,
+        initialRecipes: state.recipeViewer.initializatingRecipes,
         loading: state.recipeViewer.loading,
     };
 };

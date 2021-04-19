@@ -6,6 +6,7 @@ const initialState = {
     addRecipe: false,
     addIngredient: false,
     initialIngredients: 1,
+    initializatingRecipes: true,
     loading: false,
     sending: false
 }
@@ -43,7 +44,8 @@ const fetchRecipesStart = (state, action) => {
 const fetchRecipesSuccess = (state, action) => {
     return updateObject(state, {
         recipes: action.recipes,
-        loading: false
+        loading: false,
+        initializatingRecipes: false
     });
 }
 
@@ -58,9 +60,9 @@ const sendFormStart = (state, action) => {
 const sendFormSuccess = (state, action) => {
     const newRecipe = updateObject(action.recipeData, {id: action.recipeId});
     return updateObject(state, {
-        loading: false,
         sending: true,
-        recipe: state.recipes.concat(newRecipe)
+        loading: false,
+        recipe: state.recipes.concat(newRecipe),
     });
 }
 

@@ -24,7 +24,7 @@ class NewRecipe extends Component {
                     type: 'text',
                     placeholder: 'Recipe Name',
                     required: true,
-                    pattern: '[A-Za-z._-]{3,20}'
+                    pattern: '[A-Za-z._- ]{3,20}'
                 },
                 value: ''
             },
@@ -34,7 +34,7 @@ class NewRecipe extends Component {
                     type: 'text',
                     placeholder: 'Ingredient',
                     required: true,
-                    pattern: '[A-Za-z._-]{3,20}'
+                    pattern: '[0-9A-Za-z._- ]{3,20}'
                 },
                 value: ''
             },
@@ -44,7 +44,7 @@ class NewRecipe extends Component {
                     maxLength: 1000,
                     placeholder: 'Instructions',
                     required: true,
-                    pattern: '[A-Za-z0-9._-]'
+                    pattern: '[0-9A-Za-z0-9._- ]'
                 },
                 value: ''
             },
@@ -73,13 +73,15 @@ class NewRecipe extends Component {
         this.setState({recipeForm: updatedRecipeForm}); // Update the state
     }
 
-/*     inputClearHandler = () => {
+    /*     
+    inputClearHandler = () => {
         for(let formElementIdentifier in this.state.recipeForm) {
             const updatedFormElemet = updateObject(this.state.recipeForm[formElementIdentifier], {value: ''}); // Get value from event
             const updatedRecipeForm = updateObject(this.state.recipeForm, {[formElementIdentifier]: updatedFormElemet}); // Set the correct value to copied state
             this.setState({recipeForm: updatedRecipeForm}); // Update the state
         }
-    } */
+    } 
+    */
 
     render() {
         const formElementsArray = [];
@@ -164,7 +166,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddRecipeCancel: () => dispatch(actions.addRecipeCancel()),
         onAddIngredient: () => dispatch(actions.addIngredient()),
-        onSendForm: recipeData => dispatch(actions.sendRecipeForm(recipeData))
+        onSendForm: recipeData => dispatch(actions.recipeReloadAfterSendForm(recipeData))
     };
 };
 
