@@ -24,7 +24,7 @@ class NewRecipe extends Component {
                     type: 'text',
                     placeholder: 'Recipe Name',
                     required: true,
-                    pattern: '[A-Za-z._- ]{3,20}'
+                    pattern: '[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ_\\s]{3,20}'
                 },
                 value: ''
             },
@@ -34,7 +34,7 @@ class NewRecipe extends Component {
                     type: 'text',
                     placeholder: 'Ingredient',
                     required: true,
-                    pattern: '[0-9A-Za-z._- ]{3,20}'
+                    pattern: '[0-9A-Za-zñÑáéíóúÁÉÍÓÚ_\\s]{3,20}'
                 },
                 value: ''
             },
@@ -44,7 +44,7 @@ class NewRecipe extends Component {
                     maxLength: 1000,
                     placeholder: 'Instructions',
                     required: true,
-                    pattern: '[0-9A-Za-z0-9._- ]'
+                    pattern: '[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ_\\s\t\n]'
                 },
                 value: ''
             },
@@ -73,15 +73,14 @@ class NewRecipe extends Component {
         this.setState({recipeForm: updatedRecipeForm}); // Update the state
     }
 
-    /*     
     inputClearHandler = () => {
         for(let formElementIdentifier in this.state.recipeForm) {
-            const updatedFormElemet = updateObject(this.state.recipeForm[formElementIdentifier], {value: ''}); // Get value from event
-            const updatedRecipeForm = updateObject(this.state.recipeForm, {[formElementIdentifier]: updatedFormElemet}); // Set the correct value to copied state
-            this.setState({recipeForm: updatedRecipeForm}); // Update the state
+            //console.log(formElementIdentifier)
+            //const updatedFormElemet = updateObject(this.state.recipeForm[formElementIdentifier], {value: ''}); // Get value from event
+            //const updatedRecipeForm = updateObject(this.state.recipeForm, {[formElementIdentifier]: updatedFormElemet}); // Set the correct value to copied state
+            //this.setState({recipeForm: updatedRecipeForm}); // Update the state
         }
     } 
-    */
 
     render() {
         const formElementsArray = [];
@@ -91,6 +90,8 @@ class NewRecipe extends Component {
                 config: this.state.recipeForm[key]
             });
         }
+
+        this.inputClearHandler();
 
         const sectionOne = 
             <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
