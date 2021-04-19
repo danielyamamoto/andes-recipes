@@ -1,0 +1,17 @@
+@import '../../../assets/sass/variables';
+
+.selectRecipes {
+    &:not(div:last-of-type) {
+        margin-bottom: 2rem;
+    }
+
+    & p {
+        font-weight: 500;
+        font-size: 1.6rem;
+        color: $color-blue-grey;
+
+        & .active {
+            color: $primary-color-green;
+        }
+    }
+}

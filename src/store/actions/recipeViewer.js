@@ -25,6 +25,18 @@ export const addIngredientFinished = () => {
     };
 };
 
+export const selectRecipeStart = () => {
+    return {
+        type: actionTypes.SELECT_RECIPE_START
+    };
+};
+
+export const selectRecipeCancel = () => {
+    return {
+        type: actionTypes.SELECT_RECIPE_CANCEL
+    };
+};
+
 export const addIngredient = () => {
     return dispatch => {
         dispatch(addIngredientStart());
@@ -91,13 +103,6 @@ export const recipeFormFailed = error => {
     };
 };
 
-export const recipeReloadAfterSendForm = (recipeData) => {
-    return dispatch => {
-        dispatch(sendRecipeForm(recipeData));
-        dispatch(fetchRecipes());
-    }
-};
-
 export const sendRecipeForm = recipeData => {
     return dispatch => {
         dispatch(recipeFormStart());
@@ -105,6 +110,7 @@ export const sendRecipeForm = recipeData => {
         axios.post('/recipes.json', recipeData)
             .then(response => {
                 dispatch(recipeFormSuccess(response.data.name, recipeData.data));
+                dispatch(fetchRecipes());
             })
             .catch(error => {
                 dispatch(recipeFormFailed(error));

@@ -5,6 +5,7 @@ const initialState = {
     recipes: [],
     addRecipe: false,
     addIngredient: false,
+    selectRecipe: false,
     initialIngredients: 1,
     initializatingRecipes: true,
     loading: false,
@@ -37,8 +38,19 @@ const addIngredientFinished = (state, action) => {
     return updateObject(state, {addIngredient: false});
 };
 
+const selectRecipeStart = (state, action) => {
+    return updateObject(state, {selectRecipe: true});
+};
+
+const selectRecipeCancel = (state, action) => {
+    return updateObject(state, {selectRecipe: false});
+};
+
 const fetchRecipesStart = (state, action) => {
-    return updateObject(state, {loading: true});
+    return updateObject(state, {
+        loading: true,
+        initializatingRecipes: true
+    });
 }
 
 const fetchRecipesSuccess = (state, action) => {
@@ -76,6 +88,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.ADD_RECIPE_CANCEL: return addRecipeCancel(state, action);
         case actionTypes.ADD_INGREDIENT_START: return addIngredientStart(state, action);
         case actionTypes.ADD_INGREDIENT_FINISHED: return addIngredientFinished(state, action);
+        case actionTypes.SELECT_RECIPE_START: return selectRecipeStart(state, action);
+        case actionTypes.SELECT_RECIPE_CANCEL: return selectRecipeCancel(state, action);
         case actionTypes.FETCH_RECIPE_START: return fetchRecipesStart(state, action);
         case actionTypes.FETCH_RECIPE_SUCCESS: return fetchRecipesSuccess(state, action);
         case actionTypes.FETCH_RECIPE_FAILED: return fetchRecipesFailed(state, action);

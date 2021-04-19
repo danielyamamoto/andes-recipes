@@ -30,7 +30,7 @@ class Recipe extends Component {
                 <Fragment>
                     <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
                         <h1>Kitchen&nbsp;Recipes</h1>
-                        <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
+                        <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')} onClick={this.props.onSelectRecipeStart}>
                             <img src={svgSelect} alt="Select the recipe" />
                             <p>SELECT A RECIPE</p>
                         </div>
@@ -103,7 +103,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchRecipes: () => dispatch(actions.fetchRecipes())
+        onFetchRecipes: () => dispatch(actions.fetchRecipes()),
+        onSelectRecipeStart: () => dispatch(actions.selectRecipeStart()),
     };
 };
 

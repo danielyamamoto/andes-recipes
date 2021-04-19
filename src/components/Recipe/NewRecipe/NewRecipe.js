@@ -166,7 +166,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddRecipeCancel: () => dispatch(actions.addRecipeCancel()),
         onAddIngredient: () => dispatch(actions.addIngredient()),
-        onSendForm: recipeData => dispatch(actions.recipeReloadAfterSendForm(recipeData))
+        onSendForm: recipeData => dispatch(actions.sendRecipeForm(recipeData))
     };
 };
 
