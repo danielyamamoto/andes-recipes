@@ -82,6 +82,22 @@ const sendFormFailed = (state, action) => {
     return updateObject(state, {loading: false});
 }
 
+const removeRecipeStart = (state, action) => {
+    return updateObject(state, {
+        loading: true
+    });
+}
+
+const removeRecipeSuccess = (state, action) => {
+    return updateObject(state, {
+        loading: false
+    });
+}
+
+const removeRecipeFailed = (state, action) => {
+    return updateObject(state, {loading: false});
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_RECIPE_START: return addRecipeStart(state, action);
@@ -96,6 +112,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.RECIPE_FORM_START: return sendFormStart(state, action);
         case actionTypes.RECIPE_FORM_SUCCESS: return sendFormSuccess(state, action);
         case actionTypes.RECIPE_FORM_FAILED: return sendFormFailed(state, action);
+        case actionTypes.REMOVE_RECIPE_START: return removeRecipeStart(state, action);
+        case actionTypes.REMOVE_RECIPE_SUCCESS: return removeRecipeSuccess(state, action);
+        case actionTypes.REMOVE_RECIPE_FAILED: return removeRecipeFailed(state, action);
         default: return state;
     }
 }

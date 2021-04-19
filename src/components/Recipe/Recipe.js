@@ -15,6 +15,10 @@ class Recipe extends Component {
         this.props.onFetchRecipes();
     }
 
+    removeRecipe = () => {
+        this.props.onRemoveRecipe(this.props.recipes[0].id);
+    };
+
     render() {
         const recipesArray = [];
         for(let key in this.props.recipes) {
@@ -49,7 +53,7 @@ class Recipe extends Component {
                                 <img src={svgStarEmpty} alt="Starfull" />
                             </div>
                         </div>
-                        <div>
+                        <div onClick={this.removeRecipe}>
                             <img src={svgRemove} alt="Select the recipe" />
                         </div>
                     </div>
@@ -66,7 +70,6 @@ class Recipe extends Component {
                                             <p>{recipesArray[0].config.recipeData.ingredientName.value}</p>
                                         </div>
                                     </div>
-
                                 </li>
                             </ul>
                         </div>
@@ -105,6 +108,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchRecipes: () => dispatch(actions.fetchRecipes()),
         onSelectRecipeStart: () => dispatch(actions.selectRecipeStart()),
+        onRemoveRecipe: recipeId => dispatch(actions.removeRecipe(recipeId)),
     };
 };
 

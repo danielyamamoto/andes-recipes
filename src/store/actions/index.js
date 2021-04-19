@@ -5,5 +5,6 @@ export {
     selectRecipeStart,
     selectRecipeCancel,
     fetchRecipes,
-    sendRecipeForm
+    sendRecipeForm,
+    removeRecipe
 } from './recipeViewer';

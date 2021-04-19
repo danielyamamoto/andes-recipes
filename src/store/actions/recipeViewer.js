@@ -106,7 +106,7 @@ export const recipeFormFailed = error => {
 export const sendRecipeForm = recipeData => {
     return dispatch => {
         dispatch(recipeFormStart());
-        
+
         axios.post('/recipes.json', recipeData)
             .then(response => {
                 dispatch(recipeFormSuccess(response.data.name, recipeData.data));
@@ -114,6 +114,41 @@ export const sendRecipeForm = recipeData => {
             })
             .catch(error => {
                 dispatch(recipeFormFailed(error));
+            });
+    };
+};
+
+export const removeRecipeStart = () => {
+    return {
+        type: actionTypes.REMOVE_RECIPE_START
+    };
+};
+
+export const removeRecipeSuccess = status => {
+    return {
+        type: actionTypes.REMOVE_RECIPE_SUCCESS,
+        status: status
+    };
+};
+
+export const removeRecipeFailed = error => {
+    return {
+        type: actionTypes.REMOVE_RECIPE_FAILED,
+        error: error
+    };
+};
+
+export const removeRecipe = recipeId => {
+    return dispatch => {
+        dispatch(removeRecipeStart());
+
+        axios.delete('/recipes/' + recipeId + '.json/')
+            .then(response => {
+                dispatch(removeRecipeSuccess(response.status));
+                dispatch(fetchRecipes());
+            })
+            .catch(error => {
+                dispatch(removeRecipeFailed(error));
             });
     };
 };

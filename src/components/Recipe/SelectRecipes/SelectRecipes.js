@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 
 import classes from './SelectRecipes.module.scss';
-import * as actions from '../../../store/actions/index';
 
 class SelectRecipes extends Component {
     render() {
@@ -33,10 +32,4 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectRecipes);
+export default connect(mapStateToProps)(SelectRecipes);

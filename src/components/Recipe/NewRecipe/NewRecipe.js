@@ -73,15 +73,6 @@ class NewRecipe extends Component {
         this.setState({recipeForm: updatedRecipeForm}); // Update the state
     }
 
-    inputClearHandler = () => {
-        for(let formElementIdentifier in this.state.recipeForm) {
-            //console.log(formElementIdentifier)
-            //const updatedFormElemet = updateObject(this.state.recipeForm[formElementIdentifier], {value: ''}); // Get value from event
-            //const updatedRecipeForm = updateObject(this.state.recipeForm, {[formElementIdentifier]: updatedFormElemet}); // Set the correct value to copied state
-            //this.setState({recipeForm: updatedRecipeForm}); // Update the state
-        }
-    } 
-
     render() {
         const formElementsArray = [];
         for(let key in this.state.recipeForm) {
@@ -90,8 +81,6 @@ class NewRecipe extends Component {
                 config: this.state.recipeForm[key]
             });
         }
-
-        this.inputClearHandler();
 
         const sectionOne = 
             <div className={[classes.flexContainer, classes.flexContainer__justifyBetween, classes.flexContainer__itemsCenter].join(' ')}>
